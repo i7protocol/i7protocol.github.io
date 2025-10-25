@@ -1,209 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Página Minimalista</title>
-    <style>
-        :root {
-            --bg-gradient-start: #eef6f9;
-            --bg-gradient-end: #faf7ff;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --accent: #6c63ff;
-            --accent-dark: #5a54d6;
-            --text-color: #1f2933;
-            --muted-text: #52606d;
-            --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi Portfolio (Nivel Principiante)</title>
+  <!--
+    Portafolio básico, limpio y con humor. Versión principiante.
+    Cambiá textos y colores sin miedo. Sin footer, sin contacto, proyectos en blanco.
+  -->
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --brand: #22d3ee;
+      --accent: #f472b6;
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    .logo-img { width: 140px; border-radius: 12px; display: block; margin-bottom: 12px; }
 
-        body {
-            margin: 0;
-            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(140deg, var(--bg-gradient-start), var(--bg-gradient-end));
-            color: var(--text-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2.5rem 1.5rem 3rem;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
 
-        header {
-            max-width: 960px;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 2.5rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            box-shadow: var(--shadow);
-        }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(980px, 92%); margin: 0 auto; }
 
-        header h1 {
-            margin: 0 0 1rem;
-            font-size: clamp(2.2rem, 5vw, 3rem);
-            letter-spacing: -0.03em;
-        }
+    /* Header */
+    header { position: sticky; top: 0; background: #0b1224; border-bottom: 1px solid #1f2937; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .brand { font-weight: 800; letter-spacing: .3px; }
+    .links { display: flex; gap: 14px; }
+    .pill { padding: 6px 10px; border: 1px solid #1f2937; border-radius: 999px; color: var(--muted); }
+    .pill:hover { border-color: var(--brand); color: var(--text); }
 
-        header p {
-            max-width: 50ch;
-            margin: 0 auto;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: var(--muted-text);
-        }
+    /* Hero */
+    .hero { padding: 40px 0 24px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: center; }
+    .logo { font-size: 54px; }
+    h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin: 10px 0; }
+    .lead { color: var(--muted); }
+    .btn { display: inline-block; margin-top: 12px; background: var(--brand); color: #0f172a; font-weight: 800; padding: 10px 14px; border-radius: 12px; }
+    .btn:hover { filter: brightness(1.08); }
 
-        main {
-            width: 100%;
-            max-width: 960px;
-            display: grid;
-            gap: 1.75rem;
-        }
+    /* Card */
+    .card { background: var(--card); border: 1px solid #1f2937; border-radius: 14px; padding: 18px; }
 
-        section {
-            background: var(--card-bg);
-            border-radius: 18px;
-            padding: 2.25rem 2rem;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-        }
+    /* Secciones */
+    section { padding: 36px 0; }
+    .title { font-size: 1.6rem; margin: 0 0 10px; }
+    .sub { color: var(--muted); margin-top: -4px; }
 
-        section h2 {
-            margin-top: 0;
-            color: var(--accent);
-            font-size: 1.6rem;
-            letter-spacing: -0.01em;
-        }
+    /* Skills */
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { padding: 8px 10px; border: 1px solid #1f2937; border-radius: 999px; color: var(--muted); }
 
-        section p,
-        section li {
-            color: var(--muted-text);
-            line-height: 1.7;
-        }
+    /* Proyectos */
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .thumb { aspect-ratio: 16/10; border-radius: 10px; background: #0b1224; border: 1px dashed #334155; display: grid; place-items: center; color: #64748b; font-size: .9rem; }
 
-        ul {
-            padding-left: 1.1rem;
-        }
-
-        ul li {
-            margin-bottom: 0.6rem;
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-            border-radius: 14px;
-            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
-        }
-
-        form {
-            display: grid;
-            gap: 1rem;
-        }
-
-        input,
-        button {
-            padding: 0.85rem 1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(108, 99, 255, 0.2);
-            font-size: 1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
-        }
-
-        button {
-            cursor: pointer;
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-
-        button:hover {
-            background: var(--accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(108, 99, 255, 0.28);
-        }
-
-        footer {
-            width: 100%;
-            max-width: 960px;
-            margin-top: 3rem;
-            text-align: center;
-            color: var(--muted-text);
-            font-size: 0.95rem;
-        }
-
-        @media (min-width: 768px) {
-            main {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            section:nth-of-type(1) {
-                grid-column: span 2;
-            }
-
-            section:nth-of-type(3) {
-                grid-column: span 2;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                gap: 2rem;
-                align-items: center;
-            }
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .projects { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .projects { grid-template-columns: 1fr; }
+      .links { display: none; }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="container nav">
+      <div class="brand">🧵 Hayakawa Ren</div>
+      <nav class="links" aria-label="Principal">
+        <a class="pill" href="#sobre-mi">Sobre mí</a>
+        <a class="pill" href="#proyectos">Proyectos</a>
+      </nav>
+    </div>
+  </header>
 
-    <header>
-        <h1>Bienvenido</h1>
-        <p>Este es un ejemplo de diseño simple y tranquilo.</p>
-    </header>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <img src="denji.jpg" alt="Hayakawa Ren" class="logo-img">
+          <h1>Hola, soy <span style="color:var(--brand)">Hayakawa Ren</span> y estoy empezando en el mundo web.</h1>
+          <p class="lead">Hago sitios simples, prolijos y con cariño. Si algo queda chueco, lo enderezo. Si algo tarda, lo apuro. Si algo rompe, lo arreglo y actúo como si nada hubiera pasado 😌.</p>
+          <a class="btn" href="#proyectos">Ver mis cositas</a>
+        </div>
+        <aside class="card">
+          <p style="margin:0"><strong>Estado actual:</strong> aprendiendo HTML y CSS como si fuera un juego. <span aria-hidden>🎮</span></p>
+          <p style="color:var(--muted);margin:.4rem 0 0">Misión del mes: publicar mi primer proyecto 100% propio sin tutoriales. Se acepta mate y ánimo.</p>
+        </aside>
+      </div>
+    </section>
 
-    <main>
-        <section>
-            <h2>Sobre esta página</h2>
-            <p>Acá va una descripción breve. Nada exagerado. Todo suavecito.</p>
-        </section>
+    <!-- SOBRE MI -->
+    <section id="sobre-mi">
+      <h2 class="title">Sobre mí</h2>
+      <p class="sub">Versión resumida para humanos ocupados.</p>
+      <article class="card">
+        <p>Soy principiante con actitud de “lo saco como sea”. Me gustan las interfaces claritas y los detalles simpáticos. Busco prácticas, mini trabajos o excusas para seguir aprendiendo.</p>
+        <div class="skills" aria-label="Habilidades">
+          <span class="chip">HTML básico</span>
+          <span class="chip">CSS básico</span>
+          <span class="chip">Responsive simple</span>
+          <span class="chip">Accesibilidad de sentido común</span>
+          <span class="chip">Buscar soluciones como ninja</span>
+        </div>
+      </article>
+    </section>
 
-        <section>
-            <h2>Lista simple</h2>
-            <ul>
-                <li>Primer punto</li>
-                <li>Segundo punto</li>
-                <li>Tercer punto</li>
-            </ul>
-        </section>
+    <!-- PROYECTOS (vacío a pedido) -->
+    <section id="proyectos">
+      <h2 class="title">Proyectos</h2>
+      <p class="sub">Espacio reservado. Cargá tus proyectos cuando quieras.</p>
+      <div class="projects" aria-live="polite"></div>
+    </section>
+  </main>
 
-        <section>
-            <h2>Imagen representativa</h2>
-            <img src="denji.png" alt="Imagen minimalista">
-        </section>
+  <script>
+    // Smoke tests muy básicos para evitar sustos de consola
+    (function runSmokeTests(){
+      const results = [];
+      const push = (name, pass, note="") => results.push({ test: name, pass, note });
 
-        <section>
-            <h2>Contacto</h2>
-            <form>
-                <input type="text" placeholder="Tu nombre">
-                <input type="email" placeholder="Tu correo">
-                <button>Enviar</button>
-            </form>
-        </section>
-    </main>
+      try {
+        // No debe existir #year ni script que lo use
+        push("#year inexistente", document.getElementById('year') === null);
 
-    <footer>
-        <p>Hecho con paciencia y poca serotonina.</p>
-    </footer>
+        // Debe existir el h1 con el nombre correcto
+        const h1 = document.querySelector('h1');
+        push("H1 existe", !!h1);
+        push("H1 contiene 'Hayakawa Ren'", h1 && h1.textContent.includes('Hayakawa Ren'));
 
+        // Debe existir contenedor de proyectos y estar vacío
+        const proj = document.querySelector('.projects');
+        push(".projects existe", !!proj);
+        push(".projects vacío", proj && proj.children.length === 0, `children=${proj ? proj.children.length : 'n/a'}`);
+      } catch (e) {
+        console.error("Smoke tests explotaron:", e);
+      }
+
+      if (results.length) {
+        const allPass = results.every(r => r.pass);
+        const tag = allPass ? 'log' : 'warn';
+        console[tag]("Smoke tests:", results);
+      }
+    })();
+  </script>
 </body>
 </html>

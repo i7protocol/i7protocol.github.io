@@ -123,11 +123,13 @@
     </section>
 
     <!-- PROYECTOS (vacío a pedido) -->
+
     <section id="proyectos">
-      <h2 class="title">Proyectos</h2>
-      <p class="sub">Espacio reservado. Cargá tus proyectos cuando quieras.</p>
-      <div class="projects" aria-live="polite"></div>
-    </section>
+    <h2 class="title">Proyectos</h2>
+    <p class="sub">Proyectos obtenidos automáticamente desde GitHub.</p>
+    <div class="projects" id="repos" aria-live="polite"></div>
+  </section>
+
   </main>
 
   <script>
@@ -159,6 +161,36 @@
         console[tag]("Smoke tests:", results);
       }
     })();
-  </script>
+  <script>
+async function cargarRepos() {
+  const username = "i7protocol"; // tu user
+  const respuesta = await fetch(`https://api.github.com/users/${username}/repos`);
+  const data = await respuesta.json();
+
+  const contenedor = document.getElementById("repos");
+  contenedor.innerHTML = "";
+
+  data.forEach(repo => {
+    if (!repo.fork) {
+      contenedor.innerHTML += `
+        <article class="card">
+          <h3>${repo.name}</h3>
+          <p style="color:var(--muted); margin:0">
+            ${repo.description || "Sin descripción, pero con potencial existencial."}
+          </p>
+          <p style="margin:.5rem 0 0">
+            <a href="${repo.html_url}" target="_blank" style="color:var(--brand);font-weight:700">
+              Ver en GitHub →
+            </a>
+          </p>
+        </article>
+      `;
+    }
+  });
+}
+
+cargarRepos();
+</script>
+
 </body>
 </html>

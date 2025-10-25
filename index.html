@@ -256,7 +256,7 @@
         const user = await fetchJSON(`https://api.github.com/users/${GITHUB_USER}`);
         nameEl.textContent = user.name || user.login;
         bioEl.textContent = user.bio || 'Sin bio';
-        avatarEl.src = user.avatar_url;
+        avatarEl.src = "https://media1.tenor.com/m/DGtrV4rsm3MAAAAd/chainsaw-man-denji.gif";
         avatarEl.alt = `Avatar de ${user.login}`;
         ghLinkEl.href = user.html_url;
         statsEl.textContent = `${user.public_repos} repos • ${user.followers} seguidores • ${user.following} siguiendo`;

@@ -1,187 +1,292 @@
-<!-- FILE: index.html (para GitHub Pages en el repo i7protocol.github.io o en /docs) -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>i7protocol — Portafolio</title>
-  <meta name="description" content="Portfolio de i7protocol: proyectos, repos y contacto." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Portafolio sincronizado con los repositorios públicos de GitHub del usuario i7protocol." />
+  <link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin>
+  <style>
+    :root{
+      --bg: #0b0d10;
+      --panel: #10131a;
+      --text: #e9eef3;
+      --muted: #9aa7b3;
+      --brand: #7aa2ff;
+      --accent: #52e0a8;
+      --warn: #ffcc66;
+      --danger: #ff6b6b;
+      --border: #1b2230;
+      --shadow: 0 6px 24px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+    }
+    :root.light{
+      --bg: #f7f9fc;
+      --panel: #ffffff;
+      --text: #0d1b2a;
+      --muted: #415a77;
+      --brand: #3954ff;
+      --accent: #00a67d;
+      --warn: #b08900;
+      --danger: #c92a2a;
+      --border: #e6ecf5;
+      --shadow: 0 6px 24px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.05);
+    }
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg); color: var(--text);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{
+      display:grid; grid-template-columns: 96px 1fr auto; gap:16px; align-items:center;
+      background: var(--panel); border:1px solid var(--border); border-radius:20px; padding:16px; box-shadow: var(--shadow);
+      position: sticky; top: 16px; z-index: 10;
+    }
+    header img{width:96px;height:96px;border-radius:16px;border:1px solid var(--border);object-fit:cover}
+    .title h1{font-size: clamp(22px, 2.6vw, 32px); margin:0 0 6px}
+    .title p{margin:0;color:var(--muted)}
+    .actions{display:flex;gap:10px;align-items:center}
+    button, .link-btn{
+      appearance:none; border:1px solid var(--border); background: var(--panel); color:var(--text);
+      padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600; transition:.2s transform, .2s opacity, .2s background;
+      box-shadow: var(--shadow);
+    }
+    button:hover, .link-btn:hover{transform: translateY(-1px)}
+    .link-btn{display:inline-flex;gap:8px;align-items:center;text-decoration:none}
+
+    .toolbar{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}
+    .toolbar input, .toolbar select{
+      background: var(--panel); color: var(--text); border:1px solid var(--border);
+      padding:10px 12px; border-radius:12px; min-width: 200px;
+    }
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+    .card{
+      background: var(--panel); border:1px solid var(--border); border-radius:18px; padding:16px; box-shadow: var(--shadow);
+      display:flex; flex-direction:column; min-height: 170px;
+    }
+    .card h3{margin:0 0 8px; font-size: 18px}
+    .desc{color:var(--muted); font-size:14px; line-height:1.4; margin-bottom:10px}
+    .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:auto}
+    .badge{font-size:12px; padding:6px 8px; border-radius:999px; border:1px solid var(--border); background:rgba(122,162,255,.08)}
+    .badge.star{background:rgba(255,215,0,.08)}
+    .badge.lang{background:rgba(82,224,168,.10)}
+    .badge.updated{background:rgba(57,84,255,.08)}
+
+    .skeleton{position:relative;overflow:hidden}
+    .skeleton::after{
+      content:""; position:absolute; inset:0; background:linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent);
+      animation: shine 1.3s infinite;
+    }
+    @keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+    .footer{margin:28px 0 16px; color:var(--muted); text-align:center; font-size:13px}
+    .pill{display:inline-flex; gap:6px; align-items:center; padding:6px 10px; border-radius:999px; border:1px solid var(--border)}
+    .hidden{display:none !important}
+    .error{padding:14px; border:1px solid var(--danger); background: #2a1111; color:#ffd7d7; border-radius:12px}
+    .empty{padding:18px; text-align:center; color:var(--muted)}
+
+    @media (max-width:720px){
+      header{grid-template-columns:72px 1fr auto}
+      header img{width:72px;height:72px}
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <img class="avatar" src="https://github.com/i7protocol.png" alt="Avatar i7protocol" width="80" height="80" />
-      <div>
-        <h1>i7protocol</h1>
-        <p class="tagline">Front‑end basics. Clean shipping.</p>
-        <nav class="nav">
-          <a href="#projects">Proyectos</a>
-          <a href="#about">Sobre mí</a>
-          <a href="#contact">Contacto</a>
-        </nav>
+  <div class="container">
+    <header>
+      <img id="avatar" alt="Avatar de GitHub" class="skeleton" />
+      <div class="title">
+        <h1 id="name" class="skeleton">i7protocol</h1>
+        <p id="bio" class="skeleton">Cargando bio...</p>
+        <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap">
+          <span id="stats" class="pill skeleton">Repos • Seguidores • Siguiendo</span>
+        </div>
       </div>
-    </div>
-  </header>
+      <div class="actions">
+        <a id="ghLink" class="link-btn" href="https://github.com/i7protocol" target="_blank" rel="noopener">Visitar GitHub</a>
+        <button id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema">🌗</button>
+      </div>
+    </header>
 
-  <main class="container">
-    <section id="projects" class="section">
-      <h2>Proyectos</h2>
-      <div id="repo-grid" class="grid"></div>
+    <section class="toolbar" aria-label="Herramientas de filtrado y orden">
+      <input id="search" type="search" placeholder="Buscar proyecto por nombre o descripción" />
+      <select id="langFilter">
+        <option value="">Todas las tecnologías</option>
+      </select>
+      <select id="sort">
+        <option value="updated">Orden: actualizados</option>
+        <option value="stars">Orden: estrellas</option>
+        <option value="name">Orden: nombre</option>
+      </select>
+      <span id="count" class="pill">0 proyectos</span>
     </section>
 
-    <section id="about" class="section">
-      <h2>Sobre mí</h2>
-      <p>
-        Hola, soy <strong>i7protocol</strong>. Este portfolio se genera con HTML, CSS y un poco de
-        JavaScript para listar repos desde la API de GitHub. Editá este texto para contar quién sos
-        y qué estás construyendo.
-      </p>
-      <ul class="about-list">
-        <li>Stack: HTML, CSS, JavaScript</li>
-        <li>Foco: proyectos simples, útiles y bien presentados</li>
-      </ul>
-    </section>
+    <section id="projects" class="grid" aria-live="polite" aria-busy="true"></section>
 
-    <section id="contact" class="section">
-      <h2>Contacto</h2>
-      <p>Podés abrir un issue en cualquier repo o encontrarme en GitHub como <strong>@i7protocol</strong>.</p>
-    </section>
-  </main>
+    <div id="empty" class="empty hidden">No hay proyectos que coincidan con el filtro. Probá quitar filtros o revisar que el usuario tenga repos públicos.</div>
+    <div id="error" class="error hidden"></div>
 
-  <footer class="site-footer">
-    <div class="container small">Hecho con ♥ y GitHub Pages.</div>
-  </footer>
+    <p class="footer">Hecho con HTML, CSS y JavaScript. Datos traídos en vivo desde la API pública de GitHub.</p>
+  </div>
 
   <script>
-    // --- Config ---
-    const GH_USER = "i7protocol";
-    const MAX_REPOS = 9; // cuántos proyectos mostrar
+    // ===================== CONFIG =====================
+    const GITHUB_USER = 'i7protocol'; // cambiá esto si querés otro usuario
+    const MAX_REPOS = 100;            // hasta 100 por página en API pública
 
-    // --- Utilidades ---
-    function formatDate(iso) {
-      try { return new Date(iso).toLocaleDateString(); } catch { return iso; }
+    // ===================== THEME =====================
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const saved = localStorage.getItem('theme') || 'dark';
+    if (saved === 'light') root.classList.add('light');
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // ===================== DOM REFS =====================
+    const projectsEl = document.getElementById('projects');
+    const nameEl = document.getElementById('name');
+    const bioEl = document.getElementById('bio');
+    const avatarEl = document.getElementById('avatar');
+    const statsEl = document.getElementById('stats');
+    const ghLinkEl = document.getElementById('ghLink');
+    const searchEl = document.getElementById('search');
+    const langFilterEl = document.getElementById('langFilter');
+    const sortEl = document.getElementById('sort');
+    const countEl = document.getElementById('count');
+    const errorEl = document.getElementById('error');
+    const emptyEl = document.getElementById('empty');
+
+    // ===================== STATE =====================
+    let repos = [];
+    let languages = new Set();
+
+    // ===================== HELPERS =====================
+    const fmt = new Intl.DateTimeFormat('es-UY', { dateStyle: 'medium' });
+    const plural = (n, s, p) => n === 1 ? s : p;
+
+    function skeletonOff(){
+      [nameEl,bioEl,avatarEl,statsEl].forEach(el=>el.classList.remove('skeleton'))
     }
 
-    function createCard(repo) {
-      const card = document.createElement('a');
-      card.className = 'card';
-      card.href = repo.html_url;
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
-      card.innerHTML = `
-        <div class="card-header">
-          <h3>${repo.name}</h3>
-          <span class="badge">${repo.private ? 'Privado' : 'Público'}</span>
-        </div>
-        <p class="desc">${repo.description ? repo.description : 'Sin descripción'}</p>
-        <div class="meta">
-          <span>★ ${repo.stargazers_count}</span>
-          <span>⬇︎ ${repo.forks_count}</span>
-          <span>✎ ${repo.language ?? 'n/a'}</span>
-          <span>Actualizado: ${formatDate(repo.pushed_at)}</span>
-        </div>
-      `;
-      return card;
+    function badge(text, cls=''){
+      const span = document.createElement('span');
+      span.className = `badge ${cls}`.trim();
+      span.textContent = text;
+      return span;
     }
 
-    async function loadRepos() {
-      const grid = document.getElementById('repo-grid');
-      grid.innerHTML = '<div class="skeleton-grid"></div>';
-      try {
-        const res = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated`);
-        if (!res.ok) throw new Error('No se pudo cargar la lista de repos');
-        const data = await res.json();
+    function normalize(str){
+      return (str || '').toLowerCase();
+    }
 
-        // Orden: pin projects first by stars, luego el resto por reciente
-        const sorted = data
-          .filter(r => !r.fork)
-          .sort((a,b) => b.stargazers_count - a.stargazers_count || new Date(b.pushed_at) - new Date(a.pushed_at))
-          .slice(0, MAX_REPOS);
+    function applyFilters(){
+      const q = normalize(searchEl.value);
+      const lang = langFilterEl.value;
+      let list = repos.slice();
 
-        grid.innerHTML = '';
-        if (!sorted.length) {
-          grid.innerHTML = '<p class="muted">Sin repos públicos por ahora.</p>';
-          return;
+      if (q) {
+        list = list.filter(r => normalize(r.name).includes(q) || normalize(r.description).includes(q));
+      }
+      if (lang) {
+        list = list.filter(r => r.language === lang);
+      }
+
+      const sort = sortEl.value;
+      if (sort === 'updated') list.sort((a,b)=> new Date(b.pushed_at) - new Date(a.pushed_at));
+      if (sort === 'stars') list.sort((a,b)=> (b.stargazers_count||0)-(a.stargazers_count||0));
+      if (sort === 'name') list.sort((a,b)=> a.name.localeCompare(b.name));
+
+      render(list);
+    }
+
+    function render(list){
+      projectsEl.innerHTML = '';
+      countEl.textContent = `${list.length} ${plural(list.length,'proyecto','proyectos')}`;
+      emptyEl.classList.toggle('hidden', list.length !== 0);
+      projectsEl.setAttribute('aria-busy', String(list.length === 0));
+
+      list.forEach(r => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        const title = document.createElement('h3');
+        const link = document.createElement('a');
+        link.href = r.html_url; link.target = '_blank'; link.rel = 'noopener';
+        link.textContent = r.name;
+        link.style.textDecoration = 'none';
+        link.style.color = 'var(--text)';
+        title.appendChild(link);
+
+        const desc = document.createElement('p');
+        desc.className = 'desc';
+        desc.textContent = r.description || 'Sin descripción';
+
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        if (r.stargazers_count) meta.appendChild(badge(`★ ${r.stargazers_count}`, 'star'));
+        if (r.language) meta.appendChild(badge(r.language, 'lang'));
+        meta.appendChild(badge(`Actualizado: ${fmt.format(new Date(r.pushed_at))}`, 'updated'));
+        if (r.homepage) {
+          const site = document.createElement('a');
+          site.href = r.homepage; site.target = '_blank'; site.rel = 'noopener';
+          site.className = 'badge'; site.textContent = 'Demo';
+          meta.appendChild(site);
         }
-        sorted.forEach(repo => grid.appendChild(createCard(repo)));
+
+        card.appendChild(title);
+        card.appendChild(desc);
+        card.appendChild(meta);
+        projectsEl.appendChild(card);
+      });
+    }
+
+    // ===================== FETCH =====================
+    async function fetchJSON(url){
+      const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
+      if (!res.ok) throw new Error(`HTTP ${res.status} al pedir ${url}`);
+      return res.json();
+    }
+
+    async function load(){
+      try {
+        // Perfil
+        const user = await fetchJSON(`https://api.github.com/users/${GITHUB_USER}`);
+        nameEl.textContent = user.name || user.login;
+        bioEl.textContent = user.bio || 'Sin bio';
+        avatarEl.src = user.avatar_url;
+        avatarEl.alt = `Avatar de ${user.login}`;
+        ghLinkEl.href = user.html_url;
+        statsEl.textContent = `${user.public_repos} repos • ${user.followers} seguidores • ${user.following} siguiendo`;
+        skeletonOff();
+
+        // Repos (no forks, no archived)
+        const raw = await fetchJSON(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=${MAX_REPOS}&sort=updated`);
+        repos = raw.filter(r => !r.fork && !r.archived);
+
+        // Lenguajes únicos
+        repos.forEach(r => { if (r.language) languages.add(r.language); });
+        [...languages].sort().forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l; opt.textContent = l; langFilterEl.appendChild(opt);
+        });
+
+        applyFilters();
       } catch (err) {
-        grid.innerHTML = `<p class="error">Error: ${err.message}</p>`;
+        console.error(err);
+        errorEl.textContent = `No pude cargar datos públicos de GitHub. Detalle: ${err.message}`;
+        errorEl.classList.remove('hidden');
       }
     }
 
-    loadRepos();
+    // ===================== EVENTS =====================
+    searchEl.addEventListener('input', applyFilters);
+    langFilterEl.addEventListener('change', applyFilters);
+    sortEl.addEventListener('change', applyFilters);
+
+    // Inicio
+    load();
   </script>
 </body>
 </html>
-
-<!-- FILE: styles.css -->
-:root {
-  --bg: #0b0d10;  --panel: #12151a;  --ink: #e8eef6;  --muted: #9aa5b1;
-  --accent: #58a6ff;  --border: #1e232b;  --shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-img { display: block; max-width: 100%; }
-.container { width: min(1100px, 92%); margin: 0 auto; }
-.small { font-size: .9rem; color: var(--muted); }
-.muted { color: var(--muted); }
-
-.site-header { border-bottom: 1px solid var(--border); background: linear-gradient(180deg, #0b0d10, #0b0d10f0 70%, transparent); position: sticky; top: 0; backdrop-filter: blur(6px); z-index: 10; }
-.header-inner { display: grid; grid-template-columns: 80px 1fr; gap: 16px; align-items: center; padding: 18px 0; }
-.avatar { border-radius: 16px; border: 1px solid var(--border); }
-.nav a { color: var(--muted); margin-right: 14px; text-decoration: none; font-weight: 600; }
-.nav a:hover { color: var(--ink); }
-
-.section { padding: 40px 0; }
-.section h2 { font-size: 1.6rem; margin: 0 0 12px; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-.card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); text-decoration: none; color: inherit; transition: transform .12s ease, border-color .12s ease; }
-.card:hover { transform: translateY(-2px); border-color: #2b313b; }
-.card-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.card h3 { margin: 0; font-size: 1.1rem; }
-.badge { font-size: .75rem; color: var(--muted); border: 1px solid var(--border); padding: 2px 8px; border-radius: 999px; }
-.desc { color: var(--muted); margin: 8px 0 12px; min-height: 2.4em; }
-.meta { display: flex; gap: 12px; flex-wrap: wrap; font-size: .85rem; color: var(--muted); }
-
-.site-footer { border-top: 1px solid var(--border); padding: 24px 0 48px; margin-top: 24px; text-align: center; }
-
-/* Skeleton loader */
-.skeleton-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-.skeleton-grid::before { content: ""; display: block; height: 160px; background: linear-gradient(90deg, #111418, #141920, #111418); border-radius: 16px; animation: shimmer 1.4s infinite; }
-@keyframes shimmer { 0%{opacity:.6} 50%{opacity:1} 100%{opacity:.6} }
-
-/* Responsive */
-@media (max-width: 600px) {
-  .header-inner { grid-template-columns: 60px 1fr; }
-  .avatar { width: 60px; height: 60px; }
-}
-
-<!-- FILE: HOWTO.md (instrucciones rápidas) -->
-# Cómo publicarlo
-
-## Opción A: README de perfil
-1. Crea un repo llamado **i7protocol/i7protocol**.
-2. Copia el archivo `README.md` de arriba como contenido del repo. Eso se verá en tu perfil.
-
-## Opción B: Portfolio con GitHub Pages
-1. Crea un repo llamado **i7protocol.github.io**.
-2. Agrega los archivos `index.html` y `styles.css` tal cual.
-3. Confirma que en `index.html` la constante `GH_USER` sea `"i7protocol"`.
-4. Hace commit en `main` y activá GitHub Pages si no aparece solo.
-5. Listo: tu portfolio estará online en `https://i7protocol.github.io`.
-
-## Opción C: Portfolio dentro de un repo existente
-1. En cualquier repo, crea una carpeta `/docs` y mete ahí `index.html` y `styles.css`.
-2. En Settings → Pages, elegí **Deploy from a branch** y la carpeta `/docs`.
-3. Espera el deploy. Fin.
-
-## Personalización mínima
-- Cambiá la tagline en el header.
-- Editá la sección "Sobre mí".
-- Ajustá `MAX_REPOS` para mostrar más o menos.
-- Si querés fijar proyectos específicos arriba, cambiá el `sort` en `loadRepos` o crea una sección manual con links.

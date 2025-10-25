@@ -1,1 +1,209 @@
-<h1> Mi Portafolio</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página Minimalista</title>
+    <style>
+        :root {
+            --bg-gradient-start: #eef6f9;
+            --bg-gradient-end: #faf7ff;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --accent: #6c63ff;
+            --accent-dark: #5a54d6;
+            --text-color: #1f2933;
+            --muted-text: #52606d;
+            --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(140deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2.5rem 1.5rem 3rem;
+        }
+
+        header {
+            max-width: 960px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            margin: 0 0 1rem;
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            letter-spacing: -0.03em;
+        }
+
+        header p {
+            max-width: 50ch;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--muted-text);
+        }
+
+        main {
+            width: 100%;
+            max-width: 960px;
+            display: grid;
+            gap: 1.75rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 2.25rem 2rem;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 1.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        section p,
+        section li {
+            color: var(--muted-text);
+            line-height: 1.7;
+        }
+
+        ul {
+            padding-left: 1.1rem;
+        }
+
+        ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        input,
+        button {
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            font-size: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
+        }
+
+        button {
+            cursor: pointer;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        button:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(108, 99, 255, 0.28);
+        }
+
+        footer {
+            width: 100%;
+            max-width: 960px;
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--muted-text);
+            font-size: 0.95rem;
+        }
+
+        @media (min-width: 768px) {
+            main {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            section:nth-of-type(1) {
+                grid-column: span 2;
+            }
+
+            section:nth-of-type(3) {
+                grid-column: span 2;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 2rem;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bienvenido</h1>
+        <p>Este es un ejemplo de diseño simple y tranquilo.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Sobre esta página</h2>
+            <p>Acá va una descripción breve. Nada exagerado. Todo suavecito.</p>
+        </section>
+
+        <section>
+            <h2>Lista simple</h2>
+            <ul>
+                <li>Primer punto</li>
+                <li>Segundo punto</li>
+                <li>Tercer punto</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Imagen representativa</h2>
+            <img src="https://via.placeholder.com/300" alt="Imagen minimalista">
+        </section>
+
+        <section>
+            <h2>Contacto</h2>
+            <form>
+                <input type="text" placeholder="Tu nombre">
+                <input type="email" placeholder="Tu correo">
+                <button>Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Hecho con paciencia y poca serotonina.</p>
+    </footer>
+
+</body>
+</html>

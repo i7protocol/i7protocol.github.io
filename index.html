@@ -1,196 +1,187 @@
-<!DOCTYPE html>
+<!-- FILE: index.html (para GitHub Pages en el repo i7protocol.github.io o en /docs) -->
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mi Portfolio (Nivel Principiante)</title>
-  <!--
-    Portafolio básico, limpio y con humor. Versión principiante.
-    Cambiá textos y colores sin miedo. Sin footer, sin contacto, proyectos en blanco.
-  -->
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --brand: #22d3ee;
-      --accent: #f472b6;
-    }
-
-    .logo-img { width: 140px; border-radius: 12px; display: block; margin-bottom: 12px; }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container { width: min(980px, 92%); margin: 0 auto; }
-
-    /* Header */
-    header { position: sticky; top: 0; background: #0b1224; border-bottom: 1px solid #1f2937; }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
-    .brand { font-weight: 800; letter-spacing: .3px; }
-    .links { display: flex; gap: 14px; }
-    .pill { padding: 6px 10px; border: 1px solid #1f2937; border-radius: 999px; color: var(--muted); }
-    .pill:hover { border-color: var(--brand); color: var(--text); }
-
-    /* Hero */
-    .hero { padding: 40px 0 24px; }
-    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: center; }
-    .logo { font-size: 54px; }
-    h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin: 10px 0; }
-    .lead { color: var(--muted); }
-    .btn { display: inline-block; margin-top: 12px; background: var(--brand); color: #0f172a; font-weight: 800; padding: 10px 14px; border-radius: 12px; }
-    .btn:hover { filter: brightness(1.08); }
-
-    /* Card */
-    .card { background: var(--card); border: 1px solid #1f2937; border-radius: 14px; padding: 18px; }
-
-    /* Secciones */
-    section { padding: 36px 0; }
-    .title { font-size: 1.6rem; margin: 0 0 10px; }
-    .sub { color: var(--muted); margin-top: -4px; }
-
-    /* Skills */
-    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
-    .chip { padding: 8px 10px; border: 1px solid #1f2937; border-radius: 999px; color: var(--muted); }
-
-    /* Proyectos */
-    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .thumb { aspect-ratio: 16/10; border-radius: 10px; background: #0b1224; border: 1px dashed #334155; display: grid; place-items: center; color: #64748b; font-size: .9rem; }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .projects { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 560px) {
-      .projects { grid-template-columns: 1fr; }
-      .links { display: none; }
-    }
-  </style>
+  <title>i7protocol — Portafolio</title>
+  <meta name="description" content="Portfolio de i7protocol: proyectos, repos y contacto." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand"> Hayakawa Ren</div>
-      <nav class="links" aria-label="Principal">
-        <a class="pill" href="#sobre-mi">Sobre mí</a>
-        <a class="pill" href="#proyectos">Proyectos</a>
-      </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <img class="avatar" src="https://github.com/i7protocol.png" alt="Avatar i7protocol" width="80" height="80" />
+      <div>
+        <h1>i7protocol</h1>
+        <p class="tagline">Front‑end basics. Clean shipping.</p>
+        <nav class="nav">
+          <a href="#projects">Proyectos</a>
+          <a href="#about">Sobre mí</a>
+          <a href="#contact">Contacto</a>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <img src="denji.jpg" alt="Hayakawa Ren" class="logo-img">
-          <h1>Hola, soy <span style="color:var(--brand)">Hayakawa Ren</span> y estoy empezando en el mundo web.</h1>
-          <p class="lead">Hago sitios simples, prolijos y con cariño. Si algo queda chueco, lo enderezo. Si algo tarda, lo apuro. Si algo rompe, lo arreglo y actúo como si nada hubiera pasado 😌.</p>
-          <a class="btn" href="#proyectos">Ver mis cositas</a>
-        </div>
-        <aside class="card">
-          <p style="margin:0"><strong>Estado actual:</strong> aprendiendo HTML y CSS como si fuera un juego. <span aria-hidden>🎮</span></p>
-          <p style="color:var(--muted);margin:.4rem 0 0">Misión del mes: publicar mi primer proyecto 100% propio sin tutoriales. Se acepta mate y ánimo.</p>
-        </aside>
-      </div>
+    <section id="projects" class="section">
+      <h2>Proyectos</h2>
+      <div id="repo-grid" class="grid"></div>
     </section>
 
-    <!-- SOBRE MI -->
-    <section id="sobre-mi">
-      <h2 class="title">Sobre mí</h2>
-      <p class="sub">Versión resumida para humanos ocupados.</p>
-      <article class="card">
-        <p>Soy principiante con actitud de “lo saco como sea”. Me gustan las interfaces claritas y los detalles simpáticos. Busco prácticas, mini trabajos o excusas para seguir aprendiendo.</p>
-        <div class="skills" aria-label="Habilidades">
-          <span class="chip">HTML básico</span>
-          <span class="chip">CSS básico</span>
-          <span class="chip">Responsive simple</span>
-          <span class="chip">Accesibilidad de sentido común</span>
-          <span class="chip">Buscar soluciones como ninja</span>
-        </div>
-      </article>
+    <section id="about" class="section">
+      <h2>Sobre mí</h2>
+      <p>
+        Hola, soy <strong>i7protocol</strong>. Este portfolio se genera con HTML, CSS y un poco de
+        JavaScript para listar repos desde la API de GitHub. Editá este texto para contar quién sos
+        y qué estás construyendo.
+      </p>
+      <ul class="about-list">
+        <li>Stack: HTML, CSS, JavaScript</li>
+        <li>Foco: proyectos simples, útiles y bien presentados</li>
+      </ul>
     </section>
 
-    <!-- PROYECTOS (vacío a pedido) -->
-
-    <section id="proyectos">
-    <h2 class="title">Proyectos</h2>
-    <p class="sub">Proyectos obtenidos automáticamente desde GitHub.</p>
-    <div class="projects" id="repos" aria-live="polite"></div>
-  </section>
-
+    <section id="contact" class="section">
+      <h2>Contacto</h2>
+      <p>Podés abrir un issue en cualquier repo o encontrarme en GitHub como <strong>@i7protocol</strong>.</p>
+    </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="container small">Hecho con ♥ y GitHub Pages.</div>
+  </footer>
+
   <script>
-    // Smoke tests muy básicos para evitar sustos de consola
-    (function runSmokeTests(){
-      const results = [];
-      const push = (name, pass, note="") => results.push({ test: name, pass, note });
+    // --- Config ---
+    const GH_USER = "i7protocol";
+    const MAX_REPOS = 9; // cuántos proyectos mostrar
 
+    // --- Utilidades ---
+    function formatDate(iso) {
+      try { return new Date(iso).toLocaleDateString(); } catch { return iso; }
+    }
+
+    function createCard(repo) {
+      const card = document.createElement('a');
+      card.className = 'card';
+      card.href = repo.html_url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.innerHTML = `
+        <div class="card-header">
+          <h3>${repo.name}</h3>
+          <span class="badge">${repo.private ? 'Privado' : 'Público'}</span>
+        </div>
+        <p class="desc">${repo.description ? repo.description : 'Sin descripción'}</p>
+        <div class="meta">
+          <span>★ ${repo.stargazers_count}</span>
+          <span>⬇︎ ${repo.forks_count}</span>
+          <span>✎ ${repo.language ?? 'n/a'}</span>
+          <span>Actualizado: ${formatDate(repo.pushed_at)}</span>
+        </div>
+      `;
+      return card;
+    }
+
+    async function loadRepos() {
+      const grid = document.getElementById('repo-grid');
+      grid.innerHTML = '<div class="skeleton-grid"></div>';
       try {
-        // No debe existir #year ni script que lo use
-        push("#year inexistente", document.getElementById('year') === null);
+        const res = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated`);
+        if (!res.ok) throw new Error('No se pudo cargar la lista de repos');
+        const data = await res.json();
 
-        // Debe existir el h1 con el nombre correcto
-        const h1 = document.querySelector('h1');
-        push("H1 existe", !!h1);
-        push("H1 contiene 'Hayakawa Ren'", h1 && h1.textContent.includes('Hayakawa Ren'));
+        // Orden: pin projects first by stars, luego el resto por reciente
+        const sorted = data
+          .filter(r => !r.fork)
+          .sort((a,b) => b.stargazers_count - a.stargazers_count || new Date(b.pushed_at) - new Date(a.pushed_at))
+          .slice(0, MAX_REPOS);
 
-        // Debe existir contenedor de proyectos y estar vacío
-        const proj = document.querySelector('.projects');
-        push(".projects existe", !!proj);
-        push(".projects vacío", proj && proj.children.length === 0, `children=${proj ? proj.children.length : 'n/a'}`);
-      } catch (e) {
-        console.error("Smoke tests explotaron:", e);
+        grid.innerHTML = '';
+        if (!sorted.length) {
+          grid.innerHTML = '<p class="muted">Sin repos públicos por ahora.</p>';
+          return;
+        }
+        sorted.forEach(repo => grid.appendChild(createCard(repo)));
+      } catch (err) {
+        grid.innerHTML = `<p class="error">Error: ${err.message}</p>`;
       }
+    }
 
-      if (results.length) {
-        const allPass = results.every(r => r.pass);
-        const tag = allPass ? 'log' : 'warn';
-        console[tag]("Smoke tests:", results);
-      }
-    })();
-<script>
-async function cargarRepos() {
-  const username = "i7protocol"; // tu user
-  const respuesta = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`);
-  const data = await respuesta.json();
-
-  const contenedor = document.getElementById("repos");
-  contenedor.innerHTML = "";
-
-  data.forEach(repo => {
-    contenedor.innerHTML += `
-      <article class="card">
-        <h3>${repo.name}</h3>
-        <p style="color:var(--muted); margin:0">
-          ${repo.description || "Sin descripción. Se deja a interpretación artística."}
-        </p>
-        <p style="margin:.5rem 0 0">
-          <a href="${repo.html_url}" target="_blank" style="color:var(--brand);font-weight:700">
-            Ver en GitHub →
-          </a>
-        </p>
-      </article>
-    `;
-  });
-}
-
-cargarRepos();
-</script>
-
-</script>
-
+    loadRepos();
+  </script>
 </body>
 </html>
+
+<!-- FILE: styles.css -->
+:root {
+  --bg: #0b0d10;  --panel: #12151a;  --ink: #e8eef6;  --muted: #9aa5b1;
+  --accent: #58a6ff;  --border: #1e232b;  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+img { display: block; max-width: 100%; }
+.container { width: min(1100px, 92%); margin: 0 auto; }
+.small { font-size: .9rem; color: var(--muted); }
+.muted { color: var(--muted); }
+
+.site-header { border-bottom: 1px solid var(--border); background: linear-gradient(180deg, #0b0d10, #0b0d10f0 70%, transparent); position: sticky; top: 0; backdrop-filter: blur(6px); z-index: 10; }
+.header-inner { display: grid; grid-template-columns: 80px 1fr; gap: 16px; align-items: center; padding: 18px 0; }
+.avatar { border-radius: 16px; border: 1px solid var(--border); }
+.nav a { color: var(--muted); margin-right: 14px; text-decoration: none; font-weight: 600; }
+.nav a:hover { color: var(--ink); }
+
+.section { padding: 40px 0; }
+.section h2 { font-size: 1.6rem; margin: 0 0 12px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); text-decoration: none; color: inherit; transition: transform .12s ease, border-color .12s ease; }
+.card:hover { transform: translateY(-2px); border-color: #2b313b; }
+.card-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.card h3 { margin: 0; font-size: 1.1rem; }
+.badge { font-size: .75rem; color: var(--muted); border: 1px solid var(--border); padding: 2px 8px; border-radius: 999px; }
+.desc { color: var(--muted); margin: 8px 0 12px; min-height: 2.4em; }
+.meta { display: flex; gap: 12px; flex-wrap: wrap; font-size: .85rem; color: var(--muted); }
+
+.site-footer { border-top: 1px solid var(--border); padding: 24px 0 48px; margin-top: 24px; text-align: center; }
+
+/* Skeleton loader */
+.skeleton-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.skeleton-grid::before { content: ""; display: block; height: 160px; background: linear-gradient(90deg, #111418, #141920, #111418); border-radius: 16px; animation: shimmer 1.4s infinite; }
+@keyframes shimmer { 0%{opacity:.6} 50%{opacity:1} 100%{opacity:.6} }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header-inner { grid-template-columns: 60px 1fr; }
+  .avatar { width: 60px; height: 60px; }
+}
+
+<!-- FILE: HOWTO.md (instrucciones rápidas) -->
+# Cómo publicarlo
+
+## Opción A: README de perfil
+1. Crea un repo llamado **i7protocol/i7protocol**.
+2. Copia el archivo `README.md` de arriba como contenido del repo. Eso se verá en tu perfil.
+
+## Opción B: Portfolio con GitHub Pages
+1. Crea un repo llamado **i7protocol.github.io**.
+2. Agrega los archivos `index.html` y `styles.css` tal cual.
+3. Confirma que en `index.html` la constante `GH_USER` sea `"i7protocol"`.
+4. Hace commit en `main` y activá GitHub Pages si no aparece solo.
+5. Listo: tu portfolio estará online en `https://i7protocol.github.io`.
+
+## Opción C: Portfolio dentro de un repo existente
+1. En cualquier repo, crea una carpeta `/docs` y mete ahí `index.html` y `styles.css`.
+2. En Settings → Pages, elegí **Deploy from a branch** y la carpeta `/docs`.
+3. Espera el deploy. Fin.
+
+## Personalización mínima
+- Cambiá la tagline en el header.
+- Editá la sección "Sobre mí".
+- Ajustá `MAX_REPOS` para mostrar más o menos.
+- Si querés fijar proyectos específicos arriba, cambiá el `sort` en `loadRepos` o crea una sección manual con links.
